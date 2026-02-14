@@ -1,6 +1,7 @@
 sudo add-apt-repository ppa:lamarque/lact -y && \
-sudo apt update && \
-sudo apt install lact maliit-keyboard qt6-virtualkeyboard-layers steamdeck-firmware amdgpu-install -y && \
+sudo nala update && \
+sudo nala install lact maliit-keyboard qtvirtualkeyboard-plugin qt6-virtualkeyboard-layers git curl -y && \
 sudo systemctl enable --now lactd && \
 sudo udevadm control --reload-rules && sudo udevadm trigger && \
-gsettings set org.gnome.desktop.a11y.applications screen-keyboard-enabled true
+kwriteconfig6 --file kwinrc --group Wayland --key VirtualKeyboardEnabled true && \
+qdbus6 org.kde.KWin /KWin reconfigure
